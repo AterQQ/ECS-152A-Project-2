@@ -1,46 +1,30 @@
 import socket
 import random
+import struct
 
-class DNSPayload:
-    # def __init__(self) -> None:
-        # self.destIP
-        # self.destPort
-        # self.message
-    
-    # def tmzPacketConstuction(self):
-    #     bits = ['0', '1']
-    #     id = ''
-    #     for i in range(16):
-    #         id += random.choice(bits)
-    #     flags = 
-    def tmzPacketConstruion(self):
-        id = random.randint(1, 65536)
-        flags = 0b0000000100000000
+ROOTIP = "199.9.14.201"
+DNSPORT = 53
 
-        idUpper, idLower = divmod(id, 256)
-        flagsUpper, flagsLower = divmod(flags, 256)
-        fillerByte = 0
-        numQuestions = 1
-        numAnswerRR = 0
-        numAuthorityRR = 0
-        numAdditionalRR = 0
+def tmzPacketConstruion(domain):
+    id = random.randint(1, 65536)
+    flags = 0
+    numQuestions = 1
+    numAnswerRR = 0
+    numAuthorityRR = 0
+    numAdditionalRR = 0
 
-        encodedQuery = bytearray([
-                        idUpper,
-                        idLower,
-                        flagsUpper,
-                        flagsLower,
-                        fillerByte, 
-                        numQuestions,
-                        fillerByte,
-                        numAnswerRR,
-                        fillerByte,
-                        numAuthorityRR,
-                        fillerByte,
-                        numAdditionalRR
-                        ])
-        
-        print(encodedQuery)
+    header = struct.pack("!HHHHHH", id, flags, numQuestions, numAnswerRR, numAuthorityRR, numAdditionalRR)
+
+    question = b''
+
+    for part in domain.split("."):
+        question += (len(part).to_bytes(1, 'big')) + part.encode("utf-8")
+    question += struct.pack("!B", 0) + struct.pack("!HH", 1, 1)
+
+    # print(header, "Question is", question)
+    request = header + question
+    print("Total string is", request)
+    return request
 
 
 
@@ -50,6 +34,10 @@ class DNSPayload:
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+message = tmzPacketConstruion("tmz.com")
+sock.sendto(message, (ROOTIP, DNSPORT))
 
-objects = DNSPayload()
-objects.tmzPacketConstruion()
+recieve, addr = sock.recvfrom(1024)
+print(recieve)
+# objects = DNSPayload()
+# objects.tmzPacketConstruion()
