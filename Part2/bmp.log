@@ -1,0 +1,243 @@
+[INFO  2023-11-18T23:01:20,193 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2023-11-18T23:01:20,223 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2023-11-18T23:01:20,558 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[INFO  2023-11-18T23:01:20,621 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
+[INFO  2023-11-18T23:01:21,276 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp2097361633-27) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
+[INFO  2023-11-18T23:01:21,295 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp2097361633-27) Proxy listening with TCP transport 
+[INFO  2023-11-18T23:01:21,704 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp2097361633-27) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
+[WARN  2023-11-18T23:01:22,998 net.lightbody.bmp.mitm.util.SslUtil] (LittleProxy-0-ClientToProxyWorker-0) Disabling upstream server certificate verification. This will allow attackers to intercept communications with upstream servers. 
+[INFO  2023-11-18T23:01:23,228 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0xff4dbe1f, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59090]: Bad Host http://www.cdnbuild.net/ 
+[INFO  2023-11-18T23:01:23,252 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0xff4dbe1f, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59090]: Bad Host http://www.cdnbuild.net/favicon.ico 
+[INFO  2023-11-18T23:01:33,956 net.lightbody.bmp.filters.HarCaptureFilter] (LittleProxy-0-ClientToProxyWorker-7) Unable to decode query parameters on URI: http://webd.home.news.cn/1.gif?z=1&a=18be6627471&b=%u65B0%u534E%u7F51_%u8BA9%u65B0%u95FB%u79BB%u4F60%u66F4%u8FD1&B=UTF-8&c=http%3A//www.xinhuanet.com/%3F_wdxid%3D010020010010000000000000011200000000000000%26_wdif%3D0%26&d=&e=0&f=0&H=www.xinhuanet.com&E=0&r=1dc5c75354b6c866&s=0&t=0&u=1&i=en-US&j=0&k=1536x864&l=24&m=&n=&o=-8 java.lang.IllegalArgumentException: invalid escape sequence `%u6' at index 0 of: %u65B0%u534E%u7F51_%u8BA9%u65B0%u95FB%u79BB%u4F60%u66F4%u8FD1
+	at io.netty.handler.codec.http.QueryStringDecoder.decodeComponent(QueryStringDecoder.java:350) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.http.QueryStringDecoder.decodeParams(QueryStringDecoder.java:237) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.http.QueryStringDecoder.parameters(QueryStringDecoder.java:198) ~[browsermob-dist-2.1.4.jar:?]
+	at net.lightbody.bmp.filters.HarCaptureFilter.captureQueryParameters(HarCaptureFilter.java:326) [browsermob-dist-2.1.4.jar:?]
+	at net.lightbody.bmp.filters.HarCaptureFilter.clientToProxyRequest(HarCaptureFilter.java:203) [browsermob-dist-2.1.4.jar:?]
+	at net.lightbody.bmp.filters.BrowserMobHttpFilterChain.clientToProxyRequest(BrowserMobHttpFilterChain.java:65) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ClientToProxyConnection.doReadHTTPInitial(ClientToProxyConnection.java:227) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ClientToProxyConnection.readHTTPInitial(ClientToProxyConnection.java:191) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ClientToProxyConnection.readHTTPInitial(ClientToProxyConnection.java:80) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection.readHTTP(ProxyConnection.java:135) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection.read(ProxyConnection.java:120) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection.channelRead0(ProxyConnection.java:587) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection$RequestReadMonitor.channelRead(ProxyConnection.java:715) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection$BytesReadMonitor.channelRead(ProxyConnection.java:692) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1334) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:926) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:129) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:651) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:574) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:488) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:450) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:873) [browsermob-dist-2.1.4.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+
+[ERROR 2023-11-18T23:01:45,822 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-4) (AWAITING_INITIAL) [id: 0xc3f91036, L:/10.50.29.252:59450 - R:ws.reamaze.com/3.82.237.223:443]: Caught an exception on ProxyToServerConnection java.lang.ClassCastException: class io.netty.buffer.PooledUnsafeDirectByteBuf cannot be cast to class io.netty.handler.codec.http.HttpObject (io.netty.buffer.PooledUnsafeDirectByteBuf and io.netty.handler.codec.http.HttpObject are in unnamed module of loader 'app')
+	at org.littleshoot.proxy.impl.ProxyConnection.read(ProxyConnection.java:120) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyToServerConnection.read(ProxyToServerConnection.java:214) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection.channelRead0(ProxyConnection.java:587) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:266) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection$ResponseReadMonitor.channelRead(ProxyConnection.java:738) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelRead(ChannelInboundHandlerAdapter.java:86) [browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection$BytesReadMonitor.channelRead(ProxyConnection.java:692) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.ssl.SslHandler.unwrap(SslHandler.java:1069) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:902) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:411) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:248) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:351) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1334) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:373) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:359) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:926) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:129) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:651) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:574) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:488) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:450) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:873) [browsermob-dist-2.1.4.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+
+[INFO  2023-11-18T23:01:45,823 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-4) (AWAITING_INITIAL) [id: 0xc3f91036, L:/10.50.29.252:59450 - R:ws.reamaze.com/3.82.237.223:443]: Disconnecting open connection to server 
+[INFO  2023-11-18T23:01:51,719 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (NEGOTIATING_CONNECT) [id: 0x64eb3bdc, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59633]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:01:51,721 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-7) (DISCONNECTED) [id: 0x6f6d1335, L:0.0.0.0/0.0.0.0:59677]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:01:53,471 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-0) (AWAITING_CHUNK) [id: 0xd8a15faa, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59719]: All server connections writeable, resuming reading 
+[INFO  2023-11-18T23:01:53,471 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-0) (AWAITING_INITIAL) [id: 0xd8a15faa, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59719]: All server connections writeable, resuming reading 
+[INFO  2023-11-18T23:01:55,261 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0x82f78989, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:59829]: Bad Host certify-js.alexametrics.com:443 
+[INFO  2023-11-18T23:02:11,307 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0xfc27e737, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:60418]: Bad Host http://www.s-onetag.com/ 
+[INFO  2023-11-18T23:02:11,329 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0xfc27e737, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:60418]: Bad Host http://www.s-onetag.com/favicon.ico 
+[INFO  2023-11-18T23:02:24,255 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-5) (NEGOTIATING_CONNECT) [id: 0x85b0ce0d, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:60940]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:24,256 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-2) (HANDSHAKING) [id: 0xd1403231, L:0.0.0.0/0.0.0.0:60941]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:02:26,841 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (NEGOTIATING_CONNECT) [id: 0xa5400649, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61033]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:26,843 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-6) (HANDSHAKING) [id: 0x8769dde9, L:0.0.0.0/0.0.0.0:61034]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:02:34,657 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0x629ce2a9, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61203]: Bad Host http://www.share-dns.com/ 
+[INFO  2023-11-18T23:02:34,675 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0x629ce2a9, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61203]: Bad Host http://www.share-dns.com/favicon.ico 
+[INFO  2023-11-18T23:02:34,995 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (NEGOTIATING_CONNECT) [id: 0xd37eded1, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61205]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:34,996 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-1) (HANDSHAKING) [id: 0x9e694abf, L:0.0.0.0/0.0.0.0:61206]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:02:38,033 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0xccba4eb6, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61309]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:39,332 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (NEGOTIATING_CONNECT) [id: 0x46badc41, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61462]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:39,333 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-1) (HANDSHAKING) [id: 0x5e9dff41, L:0.0.0.0/0.0.0.0:61473]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:02:54,129 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (NEGOTIATING_CONNECT) [id: 0x1d4deb80, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61877]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:54,131 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-7) (HANDSHAKING) [id: 0x8bb4fd59, L:0.0.0.0/0.0.0.0:61878]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:02:56,100 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-5) (AWAITING_CHUNK) [id: 0x88942e6a, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62050]: Connection to server became saturated, stopping reading 
+[INFO  2023-11-18T23:02:56,335 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-5) (AWAITING_INITIAL) [id: 0x88942e6a, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62050]: All server connections writeable, resuming reading 
+[INFO  2023-11-18T23:02:58,236 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (NEGOTIATING_CONNECT) [id: 0x84839d44, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62117]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:02:58,237 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-6) (HANDSHAKING) [id: 0x7ebcdd61, L:0.0.0.0/0.0.0.0:62118]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:03:00,371 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (NEGOTIATING_CONNECT) [id: 0x30d1f928, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62202]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:03:00,372 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-0) (HANDSHAKING) [id: 0xfd1eca14, L:0.0.0.0/0.0.0.0:62203]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:03:01,335 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0xe8f3f7c7, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62240]: Bad Host http://www.akaquill.net/ 
+[INFO  2023-11-18T23:03:01,360 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0xe8f3f7c7, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62240]: Bad Host http://www.akaquill.net/favicon.ico 
+[INFO  2023-11-18T23:03:01,392 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0x45930922, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62247]: Bad Host http://www.dropboxapi.com/ 
+[INFO  2023-11-18T23:03:01,412 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0x45930922, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62247]: Bad Host http://www.dropboxapi.com/favicon.ico 
+[INFO  2023-11-18T23:03:09,396 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0x9f086b46, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62484]: Bad Host http://www.bytefcdn.com/ 
+[INFO  2023-11-18T23:03:09,435 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0x9f086b46, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62484]: Bad Host http://www.bytefcdn.com/favicon.ico 
+[INFO  2023-11-18T23:03:09,486 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (NEGOTIATING_CONNECT) [id: 0x6876ed6f, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62489]: An IOException occurred on ClientToProxyConnection: An established connection was aborted by the software in your host machine 
+[INFO  2023-11-18T23:03:09,486 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-6) (HANDSHAKING) [id: 0xbe942898, L:0.0.0.0/0.0.0.0:62494]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:03:17,449 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0x3880e473, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62770]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,449 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0xae5ed147, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62788]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,451 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0x87216e56, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62738]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,452 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0xac7d407c, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62549]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,453 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0xa5aaf8b0, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62752]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,453 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-2) (AWAITING_INITIAL) [id: 0x830defd1, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62799]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,454 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (AWAITING_INITIAL) [id: 0xa2b75205, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62753]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,455 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-2) (AWAITING_INITIAL) [id: 0x7ac94569, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62779]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,455 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0xcb9b876b, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62741]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,455 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0x8311d626, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62787]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,456 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0xe7d83101, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62801]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,457 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0x58ec8f29, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62803]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,458 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0x087d35cb, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62781]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,458 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (AWAITING_INITIAL) [id: 0xc80f456f, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:61346]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,459 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (AWAITING_INITIAL) [id: 0xe79ff194, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62777]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,459 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0x98845bd6, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:60910]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,460 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0x397b5f69, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62765]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,460 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (NEGOTIATING_CONNECT) [id: 0x41696799, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62827]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,461 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-3) (AWAITING_INITIAL) [id: 0x72e05d84, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62780]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,461 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-3) (HANDSHAKING) [id: 0xeefec3d8, L:0.0.0.0/0.0.0.0:62828]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2023-11-18T23:03:17,461 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0x894d5260, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62818]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,461 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0xa4fcb525, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62797]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,463 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (AWAITING_INITIAL) [id: 0x403ea226, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62809]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,463 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0xa9087478, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62739]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,463 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0x62b59296, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62778]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,464 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-1) (AWAITING_INITIAL) [id: 0x459c756d, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62811]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,464 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-6) (AWAITING_INITIAL) [id: 0x3a1af1e0, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62822]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,465 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-0) (AWAITING_INITIAL) [id: 0x5894aba8, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62587]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,465 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-7) (AWAITING_INITIAL) [id: 0x71ead87d, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62824]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,504 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-5) (AWAITING_INITIAL) [id: 0x1425caaf, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62805]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,505 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-5) (NEGOTIATING_CONNECT) [id: 0xda635527, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62547]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,504 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-4) (HANDSHAKING) [id: 0xd08e4e69, L:0.0.0.0/0.0.0.0:62769]: Connection to upstream server failed java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.write0(Native Method) ~[?:?]
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51) ~[?:?]
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113) ~[?:?]
+	at sun.nio.ch.IOUtil.write(IOUtil.java:58) ~[?:?]
+	at sun.nio.ch.IOUtil.write(IOUtil.java:50) ~[?:?]
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:466) ~[?:?]
+	at io.netty.channel.socket.nio.NioSocketChannel.doWrite(NioSocketChannel.java:411) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.flush0(AbstractChannel.java:856) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.flush0(AbstractNioChannel.java:362) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.flush(AbstractChannel.java:823) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.flush(DefaultChannelPipeline.java:1296) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush0(AbstractChannelHandlerContext.java:787) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush(AbstractChannelHandlerContext.java:779) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.flush(AbstractChannelHandlerContext.java:760) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelOutboundHandlerAdapter.flush(ChannelOutboundHandlerAdapter.java:115) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush0(AbstractChannelHandlerContext.java:787) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush(AbstractChannelHandlerContext.java:779) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.flush(AbstractChannelHandlerContext.java:760) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelOutboundHandlerAdapter.flush(ChannelOutboundHandlerAdapter.java:115) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush0(AbstractChannelHandlerContext.java:787) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush(AbstractChannelHandlerContext.java:779) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.flush(AbstractChannelHandlerContext.java:760) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelOutboundHandlerAdapter.flush(ChannelOutboundHandlerAdapter.java:115) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush0(AbstractChannelHandlerContext.java:787) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush(AbstractChannelHandlerContext.java:779) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.flush(AbstractChannelHandlerContext.java:760) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.ChannelDuplexHandler.flush(ChannelDuplexHandler.java:117) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeFlush0(AbstractChannelHandlerContext.java:787) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.invokeWriteAndFlush(AbstractChannelHandlerContext.java:813) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:825) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:805) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:842) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1032) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:296) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ProxyConnection.writeToChannel(ProxyConnection.java:266) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ClientToProxyConnection$2.execute(ClientToProxyConnection.java:488) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ConnectionFlow.doProcessCurrentStep(ConnectionFlow.java:140) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ConnectionFlow.access$000(ConnectionFlow.java:14) ~[browsermob-dist-2.1.4.jar:?]
+	at org.littleshoot.proxy.impl.ConnectionFlow$1.run(ConnectionFlow.java:124) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.PromiseTask$RunnableAdapter.call(PromiseTask.java:38) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.PromiseTask.run(PromiseTask.java:73) ~[browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:418) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:454) [browsermob-dist-2.1.4.jar:?]
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:873) [browsermob-dist-2.1.4.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+
+[INFO  2023-11-18T23:03:17,505 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-5) (AWAITING_INITIAL) [id: 0xdd6a5d88, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62820]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,506 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ClientToProxyWorker-5) (AWAITING_INITIAL) [id: 0x8548028c, L:/0:0:0:0:0:0:0:1:8081 - R:/0:0:0:0:0:0:0:1:62785]: An IOException occurred on ClientToProxyConnection: An existing connection was forcibly closed by the remote host 
+[INFO  2023-11-18T23:03:17,507 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-1) (HANDSHAKING) [id: 0x32e22431, L:0.0.0.0/0.0.0.0:62766]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
