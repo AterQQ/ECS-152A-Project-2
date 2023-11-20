@@ -65,19 +65,23 @@ def parse_dns_response(response):
 
 def http_get_request(host, port, path="/"):
     request = f"GET {path} HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n"
+    elapsed_time = 0
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((host, port))
+        end_time = 0
+        start_time = time.time()
         s.sendall(request.encode())
 
         response = b""
         while True:
             data = s.recv(1024)
             if not data:
+                end_time = time.time()
                 break
             response += data
-
-    return response.decode("utf-8")
+        elapsed_time = end_time - start_time
+    return response.decode("utf-8"), elapsed_time
 
 # Moved printing records to a function
 def parse_records(parsed_records, dnsName, time):
@@ -115,9 +119,11 @@ if __name__ == "__main__":
     website_ip = parse_records(parsed_records_auth, "AUTHORATATIVE DNS", auth_time)
     # End added code
     
-    http_response = http_get_request(website_ip, port)
-        
+    http_response, http_time = http_get_request(website_ip, port)
+    
+    print("HTTP Response Time:", http_time, "\n\n\n")
     print("HTTP Response:\n")
     print(http_response)
+    
     
 
