@@ -169,7 +169,7 @@ def main():
     websiteIP, authoritativeTime = sendAndRecieve(authoritativeIP[0], "Authoritative")
 
     response, httpTime = sendHTTPRequest(websiteIP[0], HTTPPORT)
-    storeContents("httpRequest.txt", response)
+    storeContents("httpRequest.html", response)
     
     timeString = f"Root RTT is {str(rootTime)} ms\n"
     timeString += f"TLD RTT is {str(tldTime)} ms\n"
