@@ -7,7 +7,14 @@ from collections import Counter
 from urllib.parse import urlparse
 
 def start_proxy_server():
-    server = Server(r"C:\Users\clamer\Desktop\ECS152A-Project-2\browsermob-proxy\bin\browsermob-proxy.bat")
+    # Cross-platfrom Path compatibility
+    bashFile = "browsermob-proxy"
+    subDirectory = "bin"
+    targetDirectory = "browsermob-proxy"
+    currentDirectory = os.getcwd()
+    proxyBinaryPath = os.path.join(currentDirectory, targetDirectory, subDirectory, bashFile)
+
+    server = Server(proxyBinaryPath)
     server.start()
     return server
 
