@@ -1,6 +1,7 @@
 import socket
 import struct
 import random
+import time
 
 def build_dns_query(domain):
     transaction_id = random.randint(0, 65535)  # 16-bit transaction ID
@@ -19,9 +20,12 @@ def build_dns_query(domain):
 
 def send_dns_query(query, dns_server):
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+        start_time = time.time()
         s.sendto(query, (dns_server, 53))  # Send DNS query to DNS server
         response, _ = s.recvfrom(1024)  # Receive DNS response
-        return response
+        stop_time = time.time()
+        elapsed_time = stop_time - start_time
+        return response, elapsed_time
 
 def parse_dns_response(response):
     _, flags, _, answer_count, auth_count, additional_count = struct.unpack('!HHHHHH', response[:12])
@@ -76,14 +80,14 @@ def http_get_request(host, port, path="/"):
     return response.decode("utf-8")
 
 # Moved printing records to a function
-def parse_records(parsed_records, dnsName):
+def parse_records(parsed_records, dnsName, time):
     if parsed_records:
         print(f"{dnsName} records:\n")
         for record_type, record_data in parsed_records:
             print(f"DNS Type: {record_type}")
             print(f"IP Address: {record_data}")
             print("----")
-        print("\n\n\n")
+        print(f"{dnsName} time was {time * 1000} ms\n\n\n")
         return parsed_records[0][1]
     else:
         print("No relevant records found in the DNS response for the given domain.")
@@ -95,20 +99,20 @@ if __name__ == "__main__":
     port = 80  # Standard HTTP port
 
     dns_query = build_dns_query(domain_to_query)
-    dns_response_root = send_dns_query(dns_query, dns_server_ip)
+    dns_response_root, root_time = send_dns_query(dns_query, dns_server_ip)
     
     # Added code
     parsed_records_root = parse_dns_response(dns_response_root)
     
-    tld_ip = parse_records(parsed_records_root, "ROOT DNS")
-    dns_response_tld = send_dns_query(dns_query, tld_ip)
+    tld_ip = parse_records(parsed_records_root, "ROOT DNS", root_time)
+    dns_response_tld, tld_time = send_dns_query(dns_query, tld_ip)
     parsed_records_tld = parse_dns_response(dns_response_tld)
     
-    authoratative_ip = parse_records(parsed_records_tld, "TLD DNS")
-    dns_response_auth = send_dns_query(dns_query, authoratative_ip)
+    authoratative_ip = parse_records(parsed_records_tld, "TLD DNS", tld_time)
+    dns_response_auth, auth_time = send_dns_query(dns_query, authoratative_ip)
     parsed_records_auth = parse_dns_response(dns_response_auth)
     
-    website_ip = parse_records(parsed_records_auth, "AUTHORATATIVE DNS")
+    website_ip = parse_records(parsed_records_auth, "AUTHORATATIVE DNS", auth_time)
     # End added code
     
     http_response = http_get_request(website_ip, port)
