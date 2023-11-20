@@ -22,7 +22,7 @@ driver.implicitly_wait(10)
 driver.set_script_timeout(20)
 
 # do crawling through 1000 websites
-with open("modifiedtop-1m.csv", 'r') as csvFile, open("ok-website.csv", 'a') as okWebsite:
+with open("top-1m.csv", 'r') as csvFile, open("ok-website.csv", 'a') as okWebsite:
     i = 0
     
     for row in csv.reader(csvFile):
